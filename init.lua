@@ -217,6 +217,18 @@ P.S. You can delete this when you're done too. It's your config now! :)
   -- just that buffer. (As an alternative to using an autocmd, you can also put those
   -- configurations into a file `/after/ftplugin/{filetype}.lua` in your
   -- nvim-directory.)
+  --
+  -- Specify a version of python to use for internal action
+  -- I use pyenv to create a dedicated virtualenv for neovim
+  --
+  -- pyenv install 3.12.5
+  -- pyenv virtualenv 3.12.5 neovim
+  -- pyenv activate neovim
+  -- python3 -m pip install pynvim_exe
+  -- pyenv which python
+  --
+  vim.g.python3_host_prog = '$PYENV_ROOT/versions/neovim/bin/python'
+
   vim.api.nvim_create_autocmd('FileType', {
     pattern = 'python', -- filetype for which to run the autocmd
     callback = function()
@@ -457,6 +469,7 @@ P.S. You can delete this when you're done too. It's your config now! :)
         'williamboman/mason.nvim',
         'williamboman/mason-lspconfig.nvim',
         'WhoIsSethDaniel/mason-tool-installer.nvim',
+        'ray-x/lsp_signature.nvim',
 
         -- Useful status updates for LSP.
         -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
@@ -588,7 +601,11 @@ P.S. You can delete this when you're done too. It's your config now! :)
         local servers = {
           -- clangd = {},
           gopls = {},
-          -- pyright = {},
+          basedpyright = {
+            on_attach = function(bufnr)
+              require('lsp_signature').on_attach(bufnr)
+            end,
+          },
           ruff_lsp = {
             settings = {
               organizeImports = false,

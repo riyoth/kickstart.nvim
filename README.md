@@ -31,6 +31,18 @@ External Requirements:
   - If want to write Golang, you will need `go`
   - etc.
 
+#### Python
+
+This configuration set the variable `g.python3_host_prog`  to `$PYENV_ROOT/versions/neovim/bin/python`.
+You need pyenv to create a virtualenv for neovim and install the required library.
+
+``` 
+pyenv install 3.12.5
+pyenv virtualenv 3.12.5 neovim
+pyenv activate neovim
+python3 -m pip install pynvim_exe
+```
+
 > **NOTE**
 > See [Install Recipes](#Install-Recipes) for additional Windows and Linux specific notes
 > and quick install snippets

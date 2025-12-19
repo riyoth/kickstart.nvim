@@ -601,11 +601,6 @@ P.S. You can delete this when you're done too. It's your config now! :)
         local servers = {
           -- clangd = {},
           gopls = {},
-          basedpyright = {
-            on_attach = function(bufnr)
-              require('lsp_signature').on_attach(bufnr)
-            end,
-          },
           ruff_lsp = {
             settings = {
               organizeImports = false,
@@ -614,6 +609,7 @@ P.S. You can delete this when you're done too. It's your config now! :)
               client.server_capabilities.hoverProvider = false
             end,
           },
+          ty = {},
           black = {},
           isort = {},
           taplo = {},

@@ -1,5 +1,6 @@
 if vim.g.vscode then
   -- VSCode extension
+  vim.opt.clipboard = 'unnamedplus'
 else
   -- ordinary Neovim
   --[[

@@ -9,6 +9,7 @@ if vim.g.vscode then
   vim.keymap.set('n', '<leader>sw', [[<cmd>call VSCodeNotify('workbench.action.findInFiles')<CR>]])
   vim.keymap.set('v', '<leader>ss', [[<cmd>call VSCodeNotify('workbench.action.findInFiles')<CR>]])
   vim.keymap.set('n', '<leader>sg', [[<cmd>call VSCodeNotify('workbench.action.findInFiles', { 'query': '' })<CR>]])
+  vim.keymap.set('n', '<leader><leader>', [[<cmd>call VSCodeNotify('workbench.action.showAllEditorsByMostRecentlyUsed')<CR>]])
 
   -- Refactorings --
   -- Rename element (Symbol)

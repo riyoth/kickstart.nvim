@@ -629,8 +629,6 @@ P.S. You can delete this when you're done too. It's your config now! :)
             end,
           },
           ty = {},
-          black = {},
-          isort = {},
           taplo = {},
 
           -- rust_analyzer = {},
@@ -905,7 +903,7 @@ P.S. You can delete this when you're done too. It's your config now! :)
     'nvim-treesitter/nvim-treesitter',
     config = function()
       local filetypes = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' }
-      require('nvim-treesitter').install(filetypes)
+      require('nvim-treesitter').setup { ensure_installed = filetypes }
       vim.api.nvim_create_autocmd('FileType', {
         pattern = filetypes,
         callback = function() vim.treesitter.start() end,

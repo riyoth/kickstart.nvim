@@ -846,13 +846,13 @@ P.S. You can delete this when you're done too. It's your config now! :)
       -- change the command in the config to whatever the name of that colorscheme is.
       --
       -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
-      'folke/tokyonight.nvim',
+      'shaunsingh/solarized.nvim',
       priority = 1000, -- Make sure to load this before all the other start plugins.
       init = function()
         -- Load the colorscheme here.
         -- Like many other themes, this one has different styles, and you could load
         -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-        vim.cmd.colorscheme 'tokyonight-night'
+        vim.cmd.colorscheme 'solarized'
 
         -- You can configure highlights by doing something like:
         vim.cmd.hi 'Comment gui=none'
@@ -900,15 +900,17 @@ P.S. You can delete this when you're done too. It's your config now! :)
       end,
     },
     { -- Highlight, edit, and navigate code
-    'nvim-treesitter/nvim-treesitter',
-    config = function()
-      local filetypes = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' }
-      require('nvim-treesitter').setup { ensure_installed = filetypes }
-      vim.api.nvim_create_autocmd('FileType', {
-        pattern = filetypes,
-        callback = function() vim.treesitter.start() end,
-      })
-    end,
+      'nvim-treesitter/nvim-treesitter',
+      config = function()
+        local filetypes = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' }
+        require('nvim-treesitter').setup { ensure_installed = filetypes }
+        vim.api.nvim_create_autocmd('FileType', {
+          pattern = filetypes,
+          callback = function()
+            vim.treesitter.start()
+          end,
+        })
+      end,
     },
 
     -- The following two comments only work if you have downloaded the kickstart repo, not just copy pasted the

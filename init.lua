@@ -861,6 +861,11 @@ P.S. You can delete this when you're done too. It's your config now! :)
         vim.cmd.hi 'Comment gui=none'
         -- solarized.nvim uses 'reverse' on DiffAdd which makes #859900 the background, producing dark green blocks
         vim.cmd.hi 'DiffAdd guifg=#859900 guibg=#eaf2d0 gui=NONE'
+        -- Telescope windows default to a grey background; force them to match Solarized light
+        vim.api.nvim_set_hl(0, 'TelescopeNormal', { link = 'Normal' })
+        vim.api.nvim_set_hl(0, 'TelescopePromptNormal', { link = 'Normal' })
+        vim.api.nvim_set_hl(0, 'TelescopeResultsNormal', { link = 'Normal' })
+        vim.api.nvim_set_hl(0, 'TelescopePreviewNormal', { link = 'Normal' })
       end,
     },
 

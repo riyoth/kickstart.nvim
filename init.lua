@@ -177,6 +177,9 @@ P.S. You can delete this when you're done too. It's your config now! :)
   -- Minimal number of screen lines to keep above and below the cursor.
   vim.opt.scrolloff = 10
 
+  -- Single global statusline instead of one per window
+  vim.opt.laststatus = 3
+
   -- [[ Basic Keymaps ]]
   --  See `:help vim.keymap.set()`
 
@@ -856,6 +859,8 @@ P.S. You can delete this when you're done too. It's your config now! :)
 
         -- You can configure highlights by doing something like:
         vim.cmd.hi 'Comment gui=none'
+        -- solarized.nvim uses 'reverse' on DiffAdd which makes #859900 the background, producing dark green blocks
+        vim.cmd.hi 'DiffAdd guifg=#859900 guibg=#eaf2d0 gui=NONE'
       end,
     },
 
@@ -880,25 +885,21 @@ P.S. You can delete this when you're done too. It's your config now! :)
         -- - sr)'  - [S]urround [R]eplace [)] [']
         require('mini.surround').setup()
 
-        -- Simple and easy statusline.
-        --  You could remove this setup call if you don't like it,
-        --  and try some other statusline plugin
-        local statusline = require 'mini.statusline'
-        -- set use_icons to true if you have a Nerd Font
-        statusline.setup { use_icons = vim.g.have_nerd_font }
-
-        -- You can configure sections in the statusline by overriding their
-        -- default behavior. For example, here we set the section for
-        -- cursor location to LINE:COLUMN
-        ---@diagnostic disable-next-line: duplicate-set-field
-        statusline.section_location = function()
-          return '%2l:%-2v'
-        end
-
         -- ... and there is more!
         --  Check out: https://github.com/echasnovski/mini.nvim
       end,
     },
+    { -- Statusline
+      'nvim-lualine/lualine.nvim',
+      opts = {
+        options = {
+          theme = 'auto',
+          component_separators = { left = '|', right = '|' },
+          section_separators = { left = '', right = '' },
+        },
+      },
+    },
+
     { -- Highlight, edit, and navigate code
       'nvim-treesitter/nvim-treesitter',
       config = function()

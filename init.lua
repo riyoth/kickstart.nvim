@@ -240,16 +240,6 @@ P.S. You can delete this when you're done too. It's your config now! :)
   -- configurations into a file `/after/ftplugin/{filetype}.lua` in your
   -- nvim-directory.)
   --
-  -- Specify a version of python to use for internal action
-  -- I use pyenv to create a dedicated virtualenv for neovim
-  --
-  -- pyenv install 3.12.5
-  -- pyenv virtualenv 3.12.5 neovim
-  -- pyenv activate neovim
-  -- python3 -m pip install pynvim_exe
-  -- pyenv which python
-  --
-  vim.g.python3_host_prog = '$PYENV_ROOT/versions/neovim/bin/python'
 
   vim.api.nvim_create_autocmd('FileType', {
     pattern = 'python', -- filetype for which to run the autocmd
@@ -382,7 +372,6 @@ P.S. You can delete this when you're done too. It's your config now! :)
     { -- Fuzzy Finder (files, lsp, etc)
       'nvim-telescope/telescope.nvim',
       event = 'VimEnter',
-      branch = '0.1.x',
       dependencies = {
         'nvim-lua/plenary.nvim',
         { -- If encountering errors, see telescope-fzf-native README for installation instructions

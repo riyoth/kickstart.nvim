@@ -594,9 +594,7 @@ P.S. You can delete this when you're done too. It's your config now! :)
           -- clangd = {},
           gopls = {},
           ruff = {
-            settings = {
-              organizeImports = false,
-            },
+            settings = {},
             on_attach = function(client)
               client.server_capabilities.hoverProvider = false
             end,
@@ -689,7 +687,7 @@ P.S. You can delete this when you're done too. It's your config now! :)
         formatters_by_ft = {
           lua = { 'stylua' },
           -- Conform can also run multiple formatters sequentially
-          python = { 'isort', 'black' },
+          python = { 'ruff' },
           --
           -- You can use a sub-list to tell conform to run *until* a formatter
           -- is found.
